@@ -25,12 +25,12 @@
 ### Create new component/app in Django
 
 ```console
-(venv) foo@bar:~$python manage.py startapp articles
+(venv) foo@bar:~$ python manage.py startapp articles
 ```
 
 ### Create and update Database in Django
 
 ```console
-(venv) foo@bar:~$python manage.py makemigrations
-(venv) foo@bar:~$python manage.py migrate
+(venv) foo@bar:~$ python manage.py makemigrations
+(venv) foo@bar:~$ python manage.py migrate
 ```
