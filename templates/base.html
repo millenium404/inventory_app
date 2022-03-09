@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Inventory</title>
+  </head>
+  <body>
+    <form method="GET" action="/articles">
+      {% csrf_token %}
+      <input type="text" name="q">
+      <input type="submit">
+    </form>
+    {% block content %}
+    {% endblock content %}
+  </body>
+</html>

@@ -21,3 +21,16 @@
 ```console
 (venv) foo@bar:~$ pip freeze > requirements.txt
 ```
+
+### Create new component/app in Django
+
+```console
+(venv) foo@bar:~$python manage.py startapp articles
+```
+
+### Create and update Database in Django
+
+```console
+(venv) foo@bar:~$python manage.py makemigrations
+(venv) foo@bar:~$python manage.py migrate
+```
