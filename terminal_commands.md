@@ -34,3 +34,23 @@
 (venv) foo@bar:~$ python manage.py makemigrations
 (venv) foo@bar:~$ python manage.py migrate
 ```
+### Read key-value pairs from a .env file and set them as environment variables.
+
+```console
+(venv) foo@bar:~$ pip install django-dotenv
+```
+##### In manage.py:
+
+```python
+import dotenv
+def main():
+    """Run administrative tasks."""
+    dotenv.read_dotenv()
+```
+
+##### In settings.py:
+
+```python
+import os
+DEBUG = str(os.environ.get('DEBUG')) == '1'
+```
