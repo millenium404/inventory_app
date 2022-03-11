@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'articles',
+    'accounts',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -51,6 +52,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'inventory_app.urls'
+LOGIN_URL = '/login/'
 
 TEMPLATES = [
     {
