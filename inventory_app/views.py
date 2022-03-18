@@ -5,9 +5,10 @@ from articles.models import Article
 html_string = '<h1>Hello World!</h1>'
 
 def home_view(request):
-    objects = Article.objects.all()
-
+    article_obj = Article.objects.all().first()
+    article_queryset = Article.objects.all()
     context = {
-        'objects': objects,
+        "object_list": article_queryset,
+        "object": article_obj,
     }
     return render(request, 'home-view.html', context)

@@ -1,7 +1,17 @@
 {% extends "base.html" %}
+
 {% block content %}
-{% for object in objects %}
-<h1>{{ object.title }} (id: {{ object.id }})</h1>
-<p>{{ object.content }}</p>
-{% endfor %}
+<h1>{{ object.title }} (id: {{ id }})!</h1>
+<p>{{ content }}!</p>
+
+<a href='{% url "article-create" %}'>Create Article</a>
+<a href='{% url "article-detail" slug="hello-world" %}'>Hello world article</a>
+<ul>
+    {% for x in object_list %}
+        {% if x.title %}
+            <li><a href='{{ x.get_absolute_url }}'>{{ x.title }} - {{ x.content }}</a></li>
+        {% endif %}
+    {% endfor %}
+</ul>
+
 {% endblock content %}
