@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+<br/><br/>
+<h2>Edit "{{ object.name }}" Recipe</h2>
+{% if message %}
+  <p>{{ message }}</p>
+{% endif %}
+  <form action="." method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <h2>Ingredients</h2>
+    {% if formset %}
+    {{ formset.as_p }}
+    {% endif %}
+    <button type="submit">Save</button>
+  </form>
+
+{% endblock content %}

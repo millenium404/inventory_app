@@ -54,3 +54,13 @@ def main():
 import os
 DEBUG = str(os.environ.get('DEBUG')) == '1'
 ```
+
+### Install </> htmx for django
+
+```console
+(venv) foo@bar:~$ pip install django-htmx
+```
+
+```console
+Add django_htmx to INSTALLED_APPS and django_htmx.middleware.HtmxMiddleware to MIDDLEWARE in settings.py
+```
