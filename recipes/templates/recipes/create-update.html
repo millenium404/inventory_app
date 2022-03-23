@@ -1,18 +1,57 @@
 {% extends "base.html" %}
 {% block content %}
+
+<style>
+  .ingredient-form {
+    border-bottom: 1px solid black;
+  }
+  .hidden {
+    display: none
+  }
+</style>
+
 <br/><br/>
 <h2>Edit "{{ object.name }}" Recipe</h2>
 {% if message %}
   <p>{{ message }}</p>
 {% endif %}
-  <form action="." method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <h2>Ingredients</h2>
-    {% if formset %}
-    {{ formset.as_p }}
-    {% endif %}
-    <button type="submit">Save</button>
-  </form>
+<div style="margin-top:30px;">
+  {% include 'recipes/partials/forms.html' %}
+  <br/>
+  <h3>Ingredients</h3>
+  {% for ingredient in object.get_ingredients_children %}
+    <div class="">
+      {{ ingredient.name }} - {{ ingredient.quantity }} {{ ingredient.unit }}
+    </div>
+  {% endfor %}
+</div>
+
+<script>
+
+  document.addEventListener('click', (event)=>{
+    if (event.target.id == 'add-more') {
+      add_new_form(event)
+    }
+  })
+
+  function add_new_form(event) {
+    if (event) {
+      event.preventDefault() // prevents default button submit if exists
+    }
+    // add empty form element to the html form
+    const totalNewForms = document.getElementById('id_form-TOTAL_FORMS')
+    const currentIngredientForms = document.getElementsByClassName('ingredient-form')
+    const currentFormCount = currentIngredientForms.length // + 1
+    const formCopyTarget = document.getElementById('ingredient-form-list')
+    const copyEmptyFormEl = document.getElementById('empty-form').cloneNode(true)
+    copyEmptyFormEl.setAttribute('class', 'ingredient-form')
+    copyEmptyFormEl.setAttribute('id', `form-${currentFormCount}`)
+    const regex = new RegExp('__prefix__', 'g')
+    copyEmptyFormEl.innerHTML = copyEmptyFormEl.innerHTML.replace(regex, currentFormCount)
+    totalNewForms.setAttribute('value', currentFormCount +1)
+    formCopyTarget.append(copyEmptyFormEl)
+  }
+
+</script>
 
 {% endblock content %}

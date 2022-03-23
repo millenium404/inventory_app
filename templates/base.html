@@ -2,9 +2,24 @@
 <html>
   <head>
     <script src="https://unpkg.com/htmx.org@1.7.0"></script>
+    <style>
+      .htmx-indicator {
+        display: none;
+      }
+        .htmx-request .htmx-indicator { /* Loading ... indicator */
+          display: inline;
+        }
+        .htmx-inverted-indicator {
+          display: inline;
+        }
+        .htmx-request .htmx-inverted-indicator {
+          display: none;
+        }
+    </style>
     <meta charset="utf-8">
     <title>Inventory</title>
   </head>
+
   <body>
     <form method="GET" action="/articles">
       {% csrf_token %}
